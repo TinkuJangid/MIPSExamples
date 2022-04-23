@@ -1,0 +1,25 @@
+#this code example single precision float variable into 32 bit integer(word) 
+#and print integer on console
+.data #variable declaration section	
+	#.float = 32 bit single precision float 
+	float4.5: .float 4348.53450
+	
+.text #code section
+	main: #main program starts from here
+		
+		l.s $f12,float4.5 #$f12 = value of float4.5 variable = 4348.53450
+		cvt.w.s $f12,$f12#$f12 = float value to word value
+		mfc1 $a0,$f12 #$a0 = (integer)$f12 = discard decimal places values
+		li $v0,1 #syscall 1 to print integer saved in $a0 
+		syscall
+	
+
+	
+	
+			
+	exit:
+		#terminate program 
+		li $v0,10#syscall 10 to terminate program
+		syscall
+		
+		
